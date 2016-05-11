@@ -3,6 +3,7 @@ package com.raymond.myapp;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +15,8 @@ import android.widget.TextView;
  * Created by raymond on 11/5/2016.
  */
 public class MyFragment extends Fragment {
+
+    private static final String TAG = "MyFragment";
 
     public static MyFragment newInstance(int pos) {
 
@@ -37,6 +40,13 @@ public class MyFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_menu_item, menu);
+        Log.d(TAG, "onCreateOptionsMenu: " + getArguments().getInt("pos"));
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        Log.d(TAG, "onPrepareOptionsMenu: this=" + this);
     }
 
     @Nullable
